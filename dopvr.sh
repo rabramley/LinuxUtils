@@ -20,13 +20,13 @@ for f in *.m4a; do
 #  echo $album
 #  echo $title
 
-  mkdir --parents /home/richard/NetworkDrive/Multimedia/bbc/$performer/$album
-  cp $filename.mp3 /home/richard/NetworkDrive/Multimedia/bbc/$performer/$album
+  mkdir --parents /home/richard/networkDrive/Multimedia/bbc/$performer/$album
+  cp $filename.mp3 /home/richard/networkDrive/Multimedia/bbc/$performer/$album
   mkdir --parents /home/richard/tocopy/bbc/$performer/$album
   mv $filename.mp3 /home/richard/tocopy/bbc/$performer/$album
 
-  mkdir --parents /home/richard/NetworkDrive/Multimedia/bbcsource/$performer/$album
-  mv $filename.m4a /home/richard/NetworkDrive/Multimedia/bbcsource/$performer/$album
+  mkdir --parents /home/richard/networkDrive/Multimedia/bbcsource/$performer/$album
+  mv $filename.m4a /home/richard/networkDrive/Multimedia/bbcsource/$performer/$album
 
 done
 
