@@ -2,9 +2,10 @@
 
 echo "About to do the PVR thing"
 
-/usr/bin/get_iplayer --pvr --output "/home/richard/recordings/" 2>>/tmp/get_iplayer.log
+mkdir /tmp/recordings
+/usr/bin/get_iplayer --pvr --output "/tmp/recordings/" 2>>/tmp/get_iplayer.log
 
-cd /home/richard/recordings
+cd /tmp/recordings
 
 for f in *.m4a; do
   filename=$(basename "$f")
@@ -20,14 +21,16 @@ for f in *.m4a; do
 #  echo $album
 #  echo $title
 
-  mkdir --parents /home/richard/networkDrive/Multimedia/bbc/$performer/$album
-  cp $filename.mp3 /home/richard/networkDrive/Multimedia/bbc/$performer/$album
-  mkdir --parents /home/richard/tocopy/bbc/$performer/$album
-  mv $filename.mp3 /home/richard/tocopy/bbc/$performer/$album
+  mkdir --parents /home/richard/networkdrive/Multimedia/bbc/$performer/$album
+  cp $filename.mp3 /home/richard/networkdrive/Multimedia/bbc/$performer/$album
+  mkdir --parents /home/richard/NewRecordings/bbc/$performer/$album
+  mv $filename.mp3 /home/richard/NewRecordings/bbc/$performer/$album
 
-  mkdir --parents /home/richard/networkDrive/Multimedia/bbcsource/$performer/$album
-  mv $filename.m4a /home/richard/networkDrive/Multimedia/bbcsource/$performer/$album
+  mkdir --parents /home/richard/networkdrive/Multimedia/bbcsource/$performer/$album
+  mv $filename.m4a /home/richard/networkdrive/Multimedia/bbcsource/$performer/$album
 
 done
+
+rmdir /tmp/recordings
 
 echo "Done the PVR thing"
