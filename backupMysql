@@ -6,8 +6,10 @@ else
    backupName=`date +%Y%m%d%H%M%S%N`
 fi
 
-backupFile="~/SqlBackups/$backupName.sql"
+backupFile="~/.sqlBackups/$backupName.sql"
 
 echo backing up to $backupFile
+
+mkdir -p ~/.sqlBackups
 
 mysqldump -u root -p --all-databases --add-drop-database > ~/.sqlBackups/$backupName.sql
