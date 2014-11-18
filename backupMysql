@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ ! -z "$1" ]; then
+   backupName="$1"
+else
+   backupName=`date +%Y%m%d%H%M%S%N`
+fi
+
+backupFile="~/SqlBackups/$backupName.sql"
+
+echo backing up to $backupFile
+
+mysqldump -u root -p --all-databases --add-drop-database > ~/.sqlBackups/$backupName.sql
