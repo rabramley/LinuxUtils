@@ -1,5 +1,5 @@
-DRUPALSITEALL="/var/www/sites/all"
-CIVICRMPHP="$DRUPALSITEALL"/"civicrm_custom"
+DRUPALSITEALL="/var/www/drupal-7.34/sites/all"
+CIVICRMPHP="$DRUPALSITEALL"/"lcbru_custom/civicrm_php"
 CIVICRMMODULE="$DRUPALSITEALL"/"modules/civicrm"
 ACTUALFILEPATH="$(readlink -f "$1")"
 FULLFILEPATH="$( cd "$( dirname "$ACTUALFILEPATH" )" && pwd )"/$(basename "$ACTUALFILEPATH")
