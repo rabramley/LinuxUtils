@@ -4,7 +4,7 @@
 if [ ! -z "$1" ]; then
    backupName="$1.sql"
 else
-   backupName=`ls ~/SqlBackups -t|head -n 1`
+   backupName=`ls ~/.sqlBackups -t|head -n 1`
 fi
 
 echo restoring $backupName
