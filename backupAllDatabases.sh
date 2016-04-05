@@ -2,13 +2,13 @@
  
 if [[ $1 == D ]]; then
     BACKUP_PERIOD="daily"
-    REMOVE_TIMESPAN_DAYS=+7
+    REMOVE_TIMESPAN_DAYS=+6
 elif [[ $1 == W ]]; then
     BACKUP_PERIOD="weekly"
-    REMOVE_TIMESPAN_DAYS=+30
+    REMOVE_TIMESPAN_DAYS=+21
 elif [[ $1 == M ]]; then
     BACKUP_PERIOD="monthly"
-    REMOVE_TIMESPAN_DAYS=+130
+    REMOVE_TIMESPAN_DAYS=+93
 else
     echo "Time period parameter not supplied should be D, W or M"
     exit 1
