@@ -16,9 +16,9 @@ fi
 
 TIMESTAMP=$(date +"%F")
 BACKUP_DIR="/local/backup/$BACKUP_PERIOD"
-MYSQL_USER="lampuser"
+MYSQL_USER="username"
 MYSQL=/usr/bin/mysql
-MYSQL_PASSWORD="PeRin1"
+MYSQL_PASSWORD="password"
 MYSQLDUMP=/usr/bin/mysqldump
  
 mkdir -p "$BACKUP_DIR"
@@ -26,7 +26,7 @@ mkdir -p "$BACKUP_DIR"
 databases=`$MYSQL -S /db/mysql/mysql.sock --user=$MYSQL_USER -p$MYSQL_PASSWORD -e "SHOW DATABASES;" | grep -Ev "(Database|information_schema|performance_schema)"`
  
 for db in $databases; do
-  $MYSQLDUMP --force --opt --user=$MYSQL_USER -p$MYSQL_PASSWORD --databases -S /db/mysql/mysql.sock $db | gzip > "$BACKUP_DIR/$db-$TIMESTAMP.gz"
+  $MYSQLDUMP --force --opt --user=$MYSQL_USER -p$MYSQL_PASSWORD --databases --events --routines --triggers -S /db/mysql/mysql.sock $db | gzip > "$BACKUP_DIR/$db-$TIMESTAMP.gz"
 done
 
 find $BACKUP_DIR -ctime $REMOVE_TIMESPAN_DAYS -exec rm {} +
