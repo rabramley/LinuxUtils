@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+UPLOAD_DIR=/mnt/nas/PhotosAndVideos/
+S3_BUCKET=s3://richard.bramley.archive/PhotosAndVideos/
 LOGFILE=/var/log/s3archive.log
 
 echo Starting archiving at `date` >$LOGFILE
@@ -10,7 +12,7 @@ do
     if mountpoint -q /mnt/nas
         then
             echo "Mount located" >> $LOGFILE
-            nice trickle -s -u 32 /usr/local/bin/aws s3 sync /mnt/nas/TBD_TestAwsArchive/ s3://richard.bramley.sandbox/ --exclude ".*" --exclude "*/.*" --no-follow-symlinks --size-only >>$LOGFILE 2>>$LOGFILE &
+            nice trickle -s -u 32 /usr/local/bin/aws s3 sync $UPLOAD_DIR $S3_BUCKET --exclude ".*" --exclude "*/.*" --no-follow-symlinks --size-only >>$LOGFILE 2>>$LOGFILE &
             echo "Job Started" >> $LOGFILE
             break
         fi
