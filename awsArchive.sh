@@ -10,12 +10,13 @@ do
     if mountpoint -q /mnt/nas
         then
             echo "Mount located" >> $LOGFILE
+            nice trickle -s -u 32 /usr/local/bin/aws s3 sync /mnt/nas/TBD_TestAwsArchive/ s3://richard.bramley.sandbox/ --exclude ".*" --exclude "*/.*" --no-follow-symlinks --size-only >>$LOGFILE 2>>$LOGFILE &
+            echo "Job Started" >> $LOGFILE
             break
         fi
     echo "Waiting for mount ..." >> $LOGFILE
     sleep 10
 done
 
-nice trickle -s -u 32 /usr/local/bin/aws s3 sync /mnt/nas/TBD_TestAwsArchive/ s3://richard.bramley.sandbox/ --exclude ".*" --exclude "*/.*" --no-follow-symlinks --size-only >>$LOGFILE 2>>$LOGFILE &
 
 
